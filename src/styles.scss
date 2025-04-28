@@ -1,1 +1,54 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --white: #ffffff;
+  --black: #000000;
+
+  --baseTitle: #272221;
+  --baseSubtitle: #403937;
+  --baseText: #574f4d;
+  --baseLabel: #8d8686;
+  --baseHover: #d7d5d5;
+  --baseButton: #e6e5e5;
+  --baseInput: #ededed;
+  --baseCard: #f3f2f2;
+
+  --background: #fafafa;
+
+  --purple: #8047f8;
+  --purpleLight: #ebe5f9;
+  --purpleDark: #4b2995;
+
+  --yellow: #dbac2c;
+  --yellowLight: #f1e9c9;
+  --yellowDark: #c47f17;
+
+  --danger: #e25858;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--baseText);
+}
+
+body {
+  background-color: var(--white);
+}
+
+.container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 760px) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
