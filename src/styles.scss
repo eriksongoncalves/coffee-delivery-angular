@@ -33,13 +33,17 @@
 html,
 body {
   font-family: Roboto;
-  font-weight: 400;
+  font-weight: 300;
   font-size: 14px;
   color: var(--baseText);
 }
 
 body {
   background-color: var(--white);
+}
+
+ul {
+  list-style: none;
 }
 
 .container {

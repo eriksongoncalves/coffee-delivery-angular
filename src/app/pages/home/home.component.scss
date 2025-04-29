@@ -1,0 +1,60 @@
+:host {
+  #intro {
+    display: flex;
+    justify-content: space-between;
+    padding: 100px 0;
+  }
+
+  .info {
+    max-width: 560px;
+
+    h1 {
+      font-family: 'Baloo 2';
+      font-size: 48px;
+      font-weight: bold;
+      line-height: 64px;
+      color: var(--baseTitle);
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 20px;
+      color: var(--baseSubtitle);
+      margin-bottom: 65px;
+    }
+
+    ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      row-gap: 25px;
+
+      .icon {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        color: var(--white);
+        margin-right: 6px;
+        padding-top: 3px;
+      }
+
+      li:nth-child(1) .icon {
+        background-color: var(--yellowDark);
+      }
+
+      li:nth-child(2) .icon {
+        background-color: var(--baseText);
+      }
+
+      li:nth-child(3) .icon {
+        background-color: var(--yellow);
+      }
+
+      li:nth-child(4) .icon {
+        background-color: var(--purple);
+      }
+    }
+  }
+}
