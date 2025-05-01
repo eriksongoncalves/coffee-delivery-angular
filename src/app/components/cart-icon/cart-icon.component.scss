@@ -4,5 +4,22 @@
     background-color: var(--yellowLight);
     border-radius: 6px;
     color: var(--yellowDark);
+    position: relative;
+  }
+
+  .qtd {
+    position: absolute;
+    right: -9px;
+    top: -9px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--yellowDark);
+    color: var(--white);
+    font-weight: bold;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

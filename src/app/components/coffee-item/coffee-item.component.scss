@@ -1,0 +1,111 @@
+:host {
+  .coffee-item {
+    background: var(--baseCard);
+    border-radius: 6px;
+    border-top-right-radius: 36px;
+    border-bottom-left-radius: 36px;
+    padding: 20px;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+
+    .coffee-image {
+      margin-top: -40px;
+    }
+
+    .badges {
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 4px;
+
+      .badge-item {
+        padding: 4px 8px;
+        background-color: var(--yellowLight);
+        border-radius: 100px;
+
+        color: var(--yellowDark);
+        font-size: 10px;
+        font-weight: bold;
+      }
+    }
+
+    h5 {
+      margin-top: 16px;
+      font-family: 'Baloo 2';
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    p.description {
+      color: var(--baseLabel);
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    .coffee-item-footer {
+      margin-top: 30px;
+      display: flex;
+      align-items: center;
+    }
+
+    .coffee-item-footer {
+      display: flex;
+      align-items: center;
+
+      p.price {
+        font-family: 'Baloo 2';
+        font-size: 24px;
+        font-weight: bold;
+
+        span {
+          font-family: 'Roboto';
+          font-size: 14px;
+          font-weight: 400;
+        }
+      }
+
+      button {
+        ::ng-deep app-cart-icon div {
+          margin-left: 8px;
+          background-color: var(--purple);
+          color: white;
+          height: 38px;
+        }
+      }
+
+      .qtd-control {
+        display: flex;
+        align-items: center;
+        padding: 8px;
+        background-color: var(--baseButton);
+        border-radius: 6px;
+        margin-left: 23px;
+        height: 38px;
+
+        button {
+          background-color: transparent;
+          color: var(--purple);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        input {
+          max-width: 30px;
+          background-color: transparent;
+          border: 0;
+          outline: none;
+          text-align: center;
+          color: var(--baseTitle);
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

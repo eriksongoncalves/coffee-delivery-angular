@@ -57,4 +57,21 @@
       }
     }
   }
+
+  #coffees {
+    h2 {
+      color: var(--baseSubtitle);
+      font-weight: bold;
+      font-size: 32px;
+      font-family: 'Baloo 2';
+      margin-bottom: 50px;
+    }
+
+    .coffee-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-column-gap: 32px;
+      grid-row-gap: 40px;
+    }
+  }
 }

@@ -4,6 +4,7 @@ import { ShoppingCartFillIconComponent } from '../../components/icons/shopping-c
 import { PackageIconComponent } from '../../components/icons/package-icon.component'
 import { CoffeeFillIconComponent } from '../../components/icons/coffee-fill-icon.component'
 import { TimerFillIconComponent } from '../../components/icons/timer-fill-icon.component'
+import { CoffeeItemComponent } from '../../components/coffee-item/coffee-item.component'
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,8 @@ import { TimerFillIconComponent } from '../../components/icons/timer-fill-icon.c
     ShoppingCartFillIconComponent,
     PackageIconComponent,
     CoffeeFillIconComponent,
-    TimerFillIconComponent
+    TimerFillIconComponent,
+    CoffeeItemComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

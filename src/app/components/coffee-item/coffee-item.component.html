@@ -1,0 +1,32 @@
+<div class="coffee-item">
+  <img src="assets/coffees/americano.png" alt="café expresso" class="coffee-image" />
+
+  <ul class="badges">
+    <li class="badge-item">TRADICIONAL</li>
+    <li class="badge-item">TRADICIONAL</li>
+  </ul>
+
+  <h5>EXPRESSO AMERICANO</h5>
+
+  <p class="description">O tradicional café feito com água quente e grãos moídos</p>
+
+  <div class="coffee-item-footer">
+    <p class="price"><span>R$</span> 9,90</p>
+
+    <div class="qtd-control">
+      <button type="button" aria-label="Remover 1 item do carrinho">
+        <app-minus-icon [width]="12" [height]="12"></app-minus-icon>
+      </button>
+
+      <input type="text" value="0" />
+
+      <button type="button" aria-label="Adicionar +1 item ao carrinho">
+        <app-plus-icon [width]="12" [height]="12"></app-plus-icon>
+      </button>
+    </div>
+
+    <button type="button">
+      <app-cart-icon class="cart-item"></app-cart-icon>
+    </button>
+  </div>
+</div>
