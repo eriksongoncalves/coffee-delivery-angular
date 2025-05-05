@@ -38,10 +38,9 @@
   <h2>Nossos cafés</h2>
 
   <div class="coffee-list">
-    <app-coffee-item></app-coffee-item>
-    <app-coffee-item></app-coffee-item>
-    <app-coffee-item></app-coffee-item>
-    <app-coffee-item></app-coffee-item>
-    <app-coffee-item></app-coffee-item>
+    <app-coffee-item
+      *ngFor="let coffee of coffeeList$ | async; trackBy: coffeeTrackById"
+      [coffee]="coffee"
+    />
   </div>
 </section>

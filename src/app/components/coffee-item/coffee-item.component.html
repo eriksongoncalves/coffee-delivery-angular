@@ -1,17 +1,16 @@
 <div class="coffee-item">
-  <img src="assets/coffees/americano.png" alt="café expresso" class="coffee-image" />
+  <img [src]="coffee.image" [alt]="coffee.title" class="coffee-image" />
 
   <ul class="badges">
-    <li class="badge-item">TRADICIONAL</li>
-    <li class="badge-item">TRADICIONAL</li>
+    <li class="badge-item" *ngFor="let tag of coffee.tags">{{tag | uppercase}}</li>
   </ul>
 
-  <h5>EXPRESSO AMERICANO</h5>
+  <h5>{{coffee.title}}</h5>
 
-  <p class="description">O tradicional café feito com água quente e grãos moídos</p>
+  <p class="description">{{coffee.description}}</p>
 
   <div class="coffee-item-footer">
-    <p class="price"><span>R$</span> 9,90</p>
+    <p class="price"><span>R$</span> {{coffee.price | currency: 'BRL': ''}}</p>
 
     <app-input-quantity
       (increase)="handleIncrease()"
