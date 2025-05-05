@@ -1,0 +1,29 @@
+:host {
+  .qtd-control {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    background-color: var(--baseButton);
+    border-radius: 6px;
+    margin-left: 23px;
+    height: 38px;
+
+    button {
+      background-color: transparent;
+      color: var(--purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    input {
+      max-width: 30px;
+      background-color: transparent;
+      border: 0;
+      outline: none;
+      text-align: center;
+      color: var(--baseTitle);
+      font-size: 16px;
+    }
+  }
+}
