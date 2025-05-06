@@ -3,7 +3,7 @@
     <app-minus-icon [width]="12" [height]="12"></app-minus-icon>
   </button>
 
-  <input type="text" [value]="quantity" readonly />
+  <input type="text" [value]="quantity" readonly (keydown)="$event.preventDefault()" />
 
   <button type="button" aria-label="Adicionar +1 item ao carrinho" (click)="increaseQtd()">
     <app-plus-icon [width]="12" [height]="12"></app-plus-icon>

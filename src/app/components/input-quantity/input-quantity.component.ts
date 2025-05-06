@@ -13,20 +13,20 @@ import { PlusIconComponent } from '../icons/plus-icon.component'
 })
 export class InputQuantityComponent {
   @Output()
-  decrease = new EventEmitter<number>()
+  decrease = new EventEmitter()
 
   @Output()
-  increase = new EventEmitter<number>()
+  increase = new EventEmitter()
 
   @Input()
   quantity = 0
 
   increaseQtd(): void {
-    this.increase.emit(1)
+    this.increase.emit()
   }
 
   decreaseQtd(): void {
-    this.decrease.emit(1)
+    this.decrease.emit()
   }
 
   constructor() {}

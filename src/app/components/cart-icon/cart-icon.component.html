@@ -1,6 +1,5 @@
 <div>
-  <ng-container *ngIf="(totalItemsCart$ | async) as total">
-    <div class="qtd" *ngIf="total > 0">{{total}}</div>
-  </ng-container>
+  <div class="qtd" *ngIf="quantity > 0">{{quantity}}</div>
+
   <app-shopping-cart-fill-icon [width]="19" [height]="19"></app-shopping-cart-fill-icon>
 </div>

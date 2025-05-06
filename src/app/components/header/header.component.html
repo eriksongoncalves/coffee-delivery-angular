@@ -10,7 +10,7 @@
     </div>
 
     <a routerLink="/order">
-      <app-cart-icon></app-cart-icon>
+      <app-cart-icon [quantity]="(totalItemsCart$ | async) || 0"></app-cart-icon>
     </a>
   </div>
 </header>

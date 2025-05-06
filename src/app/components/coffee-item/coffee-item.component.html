@@ -1,5 +1,5 @@
 <div class="coffee-item">
-  <img [src]="coffee.image" [alt]="coffee.title" class="coffee-image" />
+  <img [src]="coffee.image" [alt]="coffee.title" class="coffee-image" width="100" height="100" />
 
   <ul class="badges">
     <li class="badge-item" *ngFor="let tag of coffee.tags">{{tag | uppercase}}</li>
@@ -13,9 +13,9 @@
     <p class="price"><span>R$</span> {{coffee.price | currency: 'BRL': ''}}</p>
 
     <app-input-quantity
-      (increase)="handleIncrease()"
-      (decrease)="handleDecrease()"
-      [quantity]="1"
+      (increase)="handleIncrease($event, coffee)"
+      (decrease)="handleDecrease($event, coffee.id)"
+      [quantity]="(quantity$ | async) || 0"
     />
 
     <button type="button">

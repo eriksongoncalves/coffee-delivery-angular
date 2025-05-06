@@ -11,7 +11,7 @@ type CartItem = Coffee & {
   providedIn: 'root'
 })
 export class CartService {
-  cartItems = new BehaviorSubject<CartItem[]>([])
+  private cartItems = new BehaviorSubject<CartItem[]>([])
   cartItems$ = this.cartItems.asObservable()
 
   constructor() {}
