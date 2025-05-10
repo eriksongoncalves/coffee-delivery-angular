@@ -1,4 +1,4 @@
-export type AddressModel = {
+export type ViaCepResponse = {
   cep: string
   logradouro: string
   complemento: string

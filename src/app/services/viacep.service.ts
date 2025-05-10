@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
 
-import { AddressModel } from '../models/address.model'
+import { ViaCepResponse } from '../models/viacep.model'
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import { AddressModel } from '../models/address.model'
 export class ViaCepService {
   constructor(private httpClient: HttpClient) {}
 
-  getAddressFromZipcode(zipcode: string): Observable<AddressModel> {
-    return this.httpClient.get<AddressModel>(`https://viacep.com.br/ws/${zipcode}/json/`)
+  getAddressFromZipcode(zipcode: string): Observable<ViaCepResponse> {
+    return this.httpClient.get<ViaCepResponse>(`https://viacep.com.br/ws/${zipcode}/json/`)
   }
 }

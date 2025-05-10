@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
 import { CommonModule } from '@angular/common'
+import { takeUntil, debounceTime, Subject } from 'rxjs'
 
 import { MapPinLineIconComponent } from '../../components/icons/map-pin-line-icon.component'
 import { CurrencyDollarIconComponent } from '../../components/icons/currency-dollar-icon.component'
@@ -30,7 +31,8 @@ import { ViaCepService } from '../../services/viacep.service'
   templateUrl: './order.component.html',
   styleUrl: './order.component.scss'
 })
-export class OrderComponent implements OnInit {
+export class OrderComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>()
   formGroup: FormGroup = new FormGroup({})
   cartItems!: CartItem[]
   total = 0
@@ -40,6 +42,20 @@ export class OrderComponent implements OnInit {
     private cartService: CartService,
     private viaCepService: ViaCepService
   ) {}
+
+  private getAddress(zipcode: string): void {
+    this.viaCepService
+      .getAddressFromZipcode(zipcode)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(response => {
+        this.formGroup.patchValue({
+          address: response.logradouro,
+          district: response.bairro,
+          city: response.estado,
+          state: response.uf
+        })
+      })
+  }
 
   private initializeForm(): void {
     this.formGroup = this.formBuilder.group({
@@ -52,14 +68,28 @@ export class OrderComponent implements OnInit {
       state: ['', [Validators.required, Validators.maxLength(2)]],
       payment_type: ['', [Validators.required]]
     })
+
+    this.formGroup
+      .get('zipcode')
+      ?.valueChanges.pipe(takeUntil(this.destroy$), debounceTime(500))
+      .subscribe((value: string) => {
+        if (value.length === 8) {
+          this.getAddress(value)
+        }
+      })
   }
 
   ngOnInit(): void {
     this.initializeForm()
-    this.cartService.cartItems$.subscribe(items => {
+    this.cartService.cartItems$.pipe(takeUntil(this.destroy$)).subscribe(items => {
       this.cartItems = items
       this.total = items.reduce((total, item) => total + item.quantity * item.price, 0)
     })
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next()
+    this.destroy$.complete()
   }
 
   cartItemTrackById(_: number, cartItem: Coffee): string {
