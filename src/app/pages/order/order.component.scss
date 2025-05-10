@@ -1,0 +1,193 @@
+:host {
+  #order-page {
+    display: grid;
+    grid-template-columns: 1fr 448px;
+    gap: 32px;
+
+    h3 {
+      font-size: 18px;
+      font-family: 'Baloo 2';
+      font-weight: bold;
+      color: var(--baseSubtitle);
+      margin-bottom: 15px;
+    }
+  }
+
+  .card {
+    background-color: var(--baseCard);
+    border-radius: 6px;
+    padding: 40px;
+  }
+
+  .order-info {
+    &-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 32px;
+
+      h4 {
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--baseSubtitle);
+      }
+
+      & > div {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+
+    &-address {
+      margin-bottom: 12px;
+
+      app-map-pin-line-icon {
+        color: var(--yellowDark);
+      }
+
+      .input-small {
+        max-width: 70px;
+      }
+
+      .input-medium {
+        max-width: 200px;
+      }
+    }
+
+    &-payment {
+      margin-bottom: 12px;
+
+      app-currency-dollar-icon {
+        color: var(--purple);
+      }
+
+      .payment-options {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        .payment-option {
+          flex: 1;
+
+          label {
+            cursor: pointer;
+            background-color: var(--baseButton);
+            padding: 16px;
+            border-radius: 6px;
+            border: 1px solid var(--baseButton);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 12px;
+
+            app-credit-card-icon {
+              width: 16px;
+              height: 16px;
+              color: var(--purple);
+            }
+
+            app-bank-icon,
+            app-money-icon,
+            app-credit-card-icon {
+              width: 16px;
+              height: 16px;
+              color: var(--purple);
+            }
+          }
+
+          input[type='radio']:checked + label {
+            border: 1px solid var(--purple);
+            background-color: var(--purpleLight);
+          }
+
+          input {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .order-summary {
+    .card {
+      .cart-items {
+        li {
+          display: flex;
+          align-items: flex-start;
+          gap: 20px;
+          border-bottom: 1px solid var(--baseButton);
+          padding-bottom: 24px;
+          margin-bottom: 24px;
+
+          .cart-info {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+
+            h6 {
+              width: 100%;
+              margin-bottom: 8px;
+              font-size: 16px;
+              font-weight: 400;
+            }
+
+            ::ng-deep app-input-quantity div {
+              max-width: 72px;
+              margin-right: 8px;
+            }
+
+            button {
+              background-color: var(--baseButton);
+              padding: 8px;
+              border-radius: 6px;
+              display: flex;
+              align-items: center;
+              gap: 4px;
+              font-size: 12px;
+              font-weight: 300;
+              color: var(--baseText);
+
+              app-trash-icon {
+                width: 16px;
+                height: 16px;
+                color: var(--purple);
+              }
+            }
+          }
+
+          .price {
+            font-weight: bold;
+            font-size: 16px;
+          }
+        }
+      }
+
+      .resume {
+        p {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 12px;
+
+          font-size: 14px;
+
+          span {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+
+    .btn-confirm {
+      margin-top: 36px;
+      width: 100%;
+      background-color: var(--yellow);
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--white);
+    }
+  }
+}

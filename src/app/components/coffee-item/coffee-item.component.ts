@@ -38,12 +38,10 @@ export class CoffeeItemComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   handleDecrease(_: any, coffeeId: string): void {
     this.cartService.removeItem(coffeeId)
-    console.log('decrease', coffeeId)
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   handleIncrease(_: any, coffee: Coffee): void {
     this.cartService.addItem(coffee)
-    console.log('increase', coffee)
   }
 }

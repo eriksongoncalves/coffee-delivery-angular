@@ -1,1 +1,179 @@
-<p>ORDER PAGE</p>
+<section id="order-page">
+  <article class="order-info">
+    <h3>Complete seu pedido</h3>
+
+    <div class="order-info-address card">
+      <div class="order-info-header">
+        <app-map-pin-line-icon [width]="22" [height]="22"></app-map-pin-line-icon>
+
+        <div>
+          <h4>Endereço de Entrega</h4>
+          <p>Informe o endereço onde deseja receber seu pedido</p>
+        </div>
+      </div>
+
+      <form [formGroup]="formGroup">
+        <div class="form-control input-medium">
+          <input
+            type="text"
+            name="zipcode"
+            formControlName="zipcode"
+            placeholder="Cep"
+            maxlength="9"
+          />
+        </div>
+
+        <div class="form-control">
+          <input
+            type="text"
+            name="address"
+            formControlName="address"
+            placeholder="Endereço"
+            maxlength="150"
+          />
+        </div>
+
+        <div class="form-row">
+          <div class="form-control input-medium">
+            <input
+              type="text"
+              name="number"
+              formControlName="number"
+              placeholder="Número"
+              maxlength="10"
+            />
+          </div>
+
+          <div class="form-control">
+            <input
+              type="text"
+              name="complement"
+              formControlName="complement"
+              placeholder="Complemento"
+              maxlength="150"
+            />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-control input-medium">
+            <input
+              type="text"
+              name="district"
+              formControlName="district"
+              placeholder="Bairro"
+              maxlength="150"
+            />
+          </div>
+
+          <div class="form-control">
+            <input
+              type="text"
+              name="city"
+              formControlName="city"
+              placeholder="Cidade"
+              maxlength="150"
+            />
+          </div>
+
+          <div class="form-control input-small">
+            <input
+              type="text"
+              name="state"
+              formControlName="state"
+              placeholder="Estado"
+              maxlength="2"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="order-info-payment card">
+      <div class="order-info-header">
+        <app-currency-dollar-icon [width]="22" [height]="22" />
+
+        <div>
+          <h4>Pagamento</h4>
+          <p>O pagamento é feito na entrega. Escolha a forma que deseja pagar</p>
+        </div>
+      </div>
+
+      <form [formGroup]="formGroup">
+        <div class="payment-options">
+          <div class="payment-option">
+            <input
+              type="radio"
+              id="credit-card"
+              value="credit-card"
+              name="payment_type"
+              formControlName="payment_type"
+            />
+            <label for="credit-card">
+              <app-credit-card-icon [width]="16" [height]="16" />
+              CARTÃO DE CRÉDITO
+            </label>
+          </div>
+
+          <div class="payment-option">
+            <input
+              type="radio"
+              id="debit-card"
+              value="debit-card"
+              name="payment_type"
+              formControlName="payment_type"
+            />
+            <label for="debit-card">
+              <app-bank-icon [width]="16" [height]="16" /> CARTÃO DE DÉBITO
+            </label>
+          </div>
+
+          <div class="payment-option">
+            <input
+              type="radio"
+              id="money"
+              value="money"
+              name="payment_type"
+              formControlName="payment_type"
+            />
+            <label for="money"> <app-money-icon [width]="16" [height]="16" /> DINHEIRO </label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </article>
+
+  <article class="order-summary">
+    <h3>Cafés selecionados</h3>
+
+    <div class="card">
+      <div *ngIf="cartItems.length > 0">
+        <ul class="cart-items">
+          <li *ngFor="let cartItem of cartItems; trackBy: cartItemTrackById">
+            <img [src]="cartItem.image" alt="" width="64" height="64" />
+            <div class="cart-info">
+              <h6>{{cartItem.title}}</h6>
+              <app-input-quantity
+                (increase)="handleIncrease($event, cartItem)"
+                (decrease)="handleDecrease($event, cartItem.id)"
+                [quantity]="cartItem.quantity"
+              />
+              <button type="button" (click)="handleRemoveItemFromCart(cartItem.id)">
+                <app-trash-icon [width]="16" [height]="16" /> Remover
+              </button>
+            </div>
+            <p class="price">{{cartItem.price | currency: 'BRL': ''}}</p>
+          </li>
+        </ul>
+
+        <div class="resume">
+          <p>Total de itens <span>{{total | currency: 'BRL': ''}}</span></p>
+          <p>Entrega <span>R$ 3,50</span></p>
+          <p class="total">Total <span>{{(total + 3.5) | currency: 'BRL': ''}}</span></p>
+        </div>
+
+        <button type="button" class="btn-confirm" (click)="handleSubmit()">CONFIRMAR PEDIDO</button>
+      </div>
+    </div>
+  </article>
+</section>

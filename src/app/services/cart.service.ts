@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs'
 
 import { Coffee } from '../models/coffee.model'
 
-type CartItem = Coffee & {
+export type CartItem = Coffee & {
   quantity: number
 }
 
@@ -44,6 +44,17 @@ export class CartService {
 
       this.cartItems.next(currentCart)
     }
+  }
+
+  removeItemFromCart(coffeeId: string): void {
+    const currentCart = this.cartItems.value
+    const items = currentCart.filter(item => item.id !== coffeeId)
+
+    this.cartItems.next(items)
+  }
+
+  getTotal(): number {
+    return this.cartItems.value.reduce((prev, item) => prev + item.price * item.quantity, 0)
   }
 
   clear(): void {
