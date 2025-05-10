@@ -13,10 +13,12 @@ import { TrashIconComponent } from '../../components/icons/trash-icon.component'
 import { CartService, CartItem } from '../../services/cart.service'
 import { Coffee } from '../../models/coffee.model'
 import { ViaCepService } from '../../services/viacep.service'
+import { CepMaskDirective } from '../../directives/cep-mask.directive'
 
 @Component({
   selector: 'app-order',
   standalone: true,
+
   imports: [
     MapPinLineIconComponent,
     CurrencyDollarIconComponent,
@@ -26,7 +28,8 @@ import { ViaCepService } from '../../services/viacep.service'
     BankIconComponent,
     InputQuantityComponent,
     TrashIconComponent,
-    CommonModule
+    CommonModule,
+    CepMaskDirective
   ],
   templateUrl: './order.component.html',
   styleUrl: './order.component.scss'
@@ -73,7 +76,9 @@ export class OrderComponent implements OnInit, OnDestroy {
       .get('zipcode')
       ?.valueChanges.pipe(takeUntil(this.destroy$), debounceTime(500))
       .subscribe((value: string) => {
-        if (value.length === 8) {
+        if (value.length > 8) {
+          value = value.replace(/\D/g, '')
+
           this.getAddress(value)
         }
       })
