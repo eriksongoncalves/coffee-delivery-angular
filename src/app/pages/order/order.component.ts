@@ -11,6 +11,7 @@ import { InputQuantityComponent } from '../../components/input-quantity/input-qu
 import { TrashIconComponent } from '../../components/icons/trash-icon.component'
 import { CartService, CartItem } from '../../services/cart.service'
 import { Coffee } from '../../models/coffee.model'
+import { ViaCepService } from '../../services/viacep.service'
 
 @Component({
   selector: 'app-order',
@@ -36,7 +37,8 @@ export class OrderComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private cartService: CartService
+    private cartService: CartService,
+    private viaCepService: ViaCepService
   ) {}
 
   private initializeForm(): void {
