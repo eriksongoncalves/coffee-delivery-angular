@@ -1,0 +1,44 @@
+<section id="order-completed-page">
+  <div class="order-info">
+    <h1 class="title">Uhu! Pedido confirmado</h1>
+    <p class="subtitle">Agora é só aguardar que logo o café chegará até você</p>
+
+    <ul>
+      <li>
+        <div class="icon">
+          <app-map-pin-fill-icon [width]="16" [height]="16" />
+        </div>
+        <div class="description">
+          <p>
+            Entrega em
+            <span>Rua João Daniel Martinelli, 102</span>
+            <br />
+            Farrapos - Porto Alegre, RS
+          </p>
+        </div>
+      </li>
+      <li>
+        <div class="icon timer">
+          <app-timer-fill-icon [width]="16" [height]="16" />
+        </div>
+
+        <div class="description">
+          <p>Previsão de entrega</p>
+          <span>20 min - 30 min</span>
+        </div>
+      </li>
+      <li>
+        <div class="icon money">
+          <app-money-icon [width]="16" [height]="16" />
+        </div>
+        <div class="description">
+          <p>Pagamento na entrega</p>
+          <span>Cartão de Crédito</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="illustration">
+    <img src="/assets/order-completed-illustration.png" alt="" />
+  </div>
+</section>

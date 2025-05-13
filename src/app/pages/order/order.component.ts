@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
 import { CommonModule } from '@angular/common'
-import { takeUntil, debounceTime, Subject } from 'rxjs'
+import { Router } from '@angular/router'
+import { takeUntil, debounceTime, Subject, interval, take } from 'rxjs'
 
 import { MapPinLineIconComponent } from '../../components/icons/map-pin-line-icon.component'
 import { CurrencyDollarIconComponent } from '../../components/icons/currency-dollar-icon.component'
@@ -36,14 +37,18 @@ import { CepMaskDirective } from '../../directives/cep-mask.directive'
 })
 export class OrderComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>()
+  private fakeCall$ = interval(1000).pipe(take(1))
+
   formGroup: FormGroup = new FormGroup({})
   cartItems!: CartItem[]
   total = 0
+  loading = false
 
   constructor(
     private formBuilder: FormBuilder,
     private cartService: CartService,
-    private viaCepService: ViaCepService
+    private viaCepService: ViaCepService,
+    private router: Router
   ) {}
 
   private getAddress(zipcode: string): void {
@@ -116,6 +121,11 @@ export class OrderComponent implements OnInit, OnDestroy {
   }
 
   handleSubmit(): void {
-    console.log('>>> submit', this.formGroup.value)
+    this.loading = true
+
+    this.fakeCall$.subscribe(() => {
+      this.cartService.clear()
+      this.router.navigate(['order-completed'])
+    })
   }
 }

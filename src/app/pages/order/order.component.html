@@ -148,7 +148,7 @@
     <h3>Cafés selecionados</h3>
 
     <div class="card">
-      <div *ngIf="cartItems.length > 0">
+      <div *ngIf="cartItems.length > 0; else emptyCart">
         <ul class="cart-items">
           <li *ngFor="let cartItem of cartItems; trackBy: cartItemTrackById">
             <img [src]="cartItem.image" alt="" width="64" height="64" />
@@ -173,8 +173,14 @@
           <p class="total">Total <span>{{(total + 3.5) | currency: 'BRL': ''}}</span></p>
         </div>
 
-        <button type="button" class="btn-confirm" (click)="handleSubmit()">CONFIRMAR PEDIDO</button>
+        <button type="button" class="btn-confirm" (click)="handleSubmit()" [disabled]="loading">
+          {{ loading ? 'Aguarde...' : 'CONFIRMAR PEDIDO' }}
+        </button>
       </div>
+
+      <ng-template #emptyCart>
+        <p>Seu carrinho está vazio</p>
+      </ng-template>
     </div>
   </article>
 </section>

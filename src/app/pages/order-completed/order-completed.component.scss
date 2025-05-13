@@ -1,0 +1,82 @@
+:host {
+  #order-completed-page {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 80px;
+
+    .order-info {
+      h1.title {
+        color: var(--yellowDark);
+        font-size: 32px;
+        font-family: 'Baloo 2';
+      }
+
+      p.subtitle {
+        color: var(--baseSubtitle);
+        font-size: 20px;
+      }
+
+      ul {
+        background:
+          linear-gradient(white, white) padding-box,
+          linear-gradient(to right, darkblue, darkorchid) border-box;
+        border-radius: 32px;
+        border: 2px solid transparent;
+        padding: 40px;
+        border-radius: 6px;
+        border-top-right-radius: 32px;
+        border-bottom-left-radius: 32px;
+        margin-top: 40px;
+
+        li {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 35px;
+
+          p {
+            color: var(--baseText);
+            font-size: 16px;
+          }
+
+          span {
+            font-weight: bold;
+          }
+
+          .icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            app-map-pin-fill-icon,
+            app-timer-fill-icon,
+            app-money-icon {
+              color: var(--white);
+              width: 16px;
+              height: 16px;
+            }
+
+            &.timer {
+              background-color: var(--yellow);
+            }
+
+            &.money {
+              background-color: var(--yellowDark);
+            }
+          }
+        }
+      }
+    }
+
+    .illustration {
+      display: flex;
+      align-items: center;
+      align-items: center;
+    }
+  }
+}
