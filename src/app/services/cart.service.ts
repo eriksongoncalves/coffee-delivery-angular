@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { BehaviorSubject } from 'rxjs'
 
 import { Coffee } from '../models/coffee.model'
+import { CartStorageService } from './cart-storage.service'
 
 export type CartItem = Coffee & {
   quantity: number
@@ -14,7 +15,11 @@ export class CartService {
   private cartItems = new BehaviorSubject<CartItem[]>([])
   cartItems$ = this.cartItems.asObservable()
 
-  constructor() {}
+  constructor(private cartStorageService: CartStorageService) {
+    const cartItemsFromStorage = this.cartStorageService.get()
+
+    this.cartItems.next(cartItemsFromStorage)
+  }
 
   addItem(coffee: Coffee): void {
     const currentCart = this.cartItems.value
@@ -27,6 +32,7 @@ export class CartService {
     }
 
     this.cartItems.next(currentCart)
+    this.cartStorageService.save(currentCart)
   }
 
   removeItem(coffeeId: string): void {
@@ -43,6 +49,7 @@ export class CartService {
       }
 
       this.cartItems.next(currentCart)
+      this.cartStorageService.save(currentCart)
     }
   }
 
@@ -58,6 +65,7 @@ export class CartService {
   }
 
   clear(): void {
+    this.cartStorageService.clear()
     this.cartItems.next([])
   }
 }
